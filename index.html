@@ -152,6 +152,38 @@
             border-radius: 5px;
         }
 
+        .slack-message {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text);
+            padding: 15px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 15px 0;
+            font-size: 1.1em;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--accent3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slack-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: shine 3s infinite;
+        }
+
         h1 {
             font-size: 2.5em;
             margin-bottom: 20px;
@@ -238,6 +270,15 @@
                     <img src="logo.png" alt="DNewTech Logo">
                 </div>
                 <p class="thank-you">Thank you for being part of our community!</p>
+                
+                <div class="slack-message">
+                    <p>Join our Slack community!</p>
+                </div>
+                
+                <div class="qr-code">
+                    <img src="slack_qr.png" alt="Slack QR Code">
+                </div>
+                <span class="code-comment">/* Connect with other members */</span>
             </div>
             
             <div class="right-column">
