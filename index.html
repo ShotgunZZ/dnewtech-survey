@@ -60,7 +60,7 @@
             flex-direction: column;
             justify-content: center;
             color: var(--text);
-            overflow: hidden;
+            overflow: auto;
         }
 
         .container {
@@ -73,7 +73,7 @@
             animation: fadeIn 1s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .container::before {
@@ -256,6 +256,15 @@
             .left-column, .right-column {
                 width: 100%;
             }
+            
+            body {
+                padding: 10px;
+                justify-content: flex-start;
+            }
+            
+            .container {
+                margin: 20px auto;
+            }
         }
     </style>
 </head>
@@ -291,6 +300,10 @@
                 </div>
                 <span class="code-comment">/* Your input helps us improve */</span>
             </div>
+        </div>
+        
+        <div class="footer" style="margin-top: 40px; padding-bottom: 20px; font-size: 0.9em; opacity: 0.7;">
+            <p>© 2024 DNewTech - All rights reserved</p>
         </div>
     </div>
 </body>
