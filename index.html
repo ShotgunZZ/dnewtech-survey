@@ -60,7 +60,7 @@
             flex-direction: column;
             justify-content: center;
             color: var(--text);
-            overflow: hidden;
+            overflow: auto;
         }
 
         .container {
@@ -73,7 +73,7 @@
             animation: fadeIn 1s ease-out;
             border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .container::before {
@@ -96,40 +96,45 @@
             color: var(--accent2);
         }
 
-        .flex-container {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 30px;
-            flex-wrap: wrap;
+        /* Background logo styling */
+        .background-logo {
+            position: absolute;
+            top: 0%;
+            left: 0;
+            right: 50%;
+            transform: translateY(-50%);
+            opacity: 0.1;
+            z-index: 1;
+            max-width: 400px;
+            width: 60%;
+            height: auto;
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+            margin: 0 auto;
         }
 
-        .left-column {
-            flex: 1;
-            min-width: 300px;
+        /* QR codes container */
+        .qr-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+        }
+
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             animation: fadeIn 1.5s ease-out;
         }
 
-        .right-column {
-            flex: 1;
-            min-width: 300px;
-            animation: fadeIn 1.5s ease-out 0.3s;
+        .qr-section:nth-child(2) {
+            animation-delay: 0.3s;
             animation-fill-mode: both;
-        }
-
-        .logo {
-            max-width: 100%;
-            height: auto;
-            margin: 0 auto;
-            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.5));
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .logo img {
-            width: 100%;
-            height: auto;
-            max-width: 350px;
         }
 
         .qr-code {
@@ -152,23 +157,14 @@
             border-radius: 5px;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            animation: colorShift 10s infinite linear;
-            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
-        }
-
-        .scan-message {
+        .qr-label {
             background: rgba(255, 255, 255, 0.1);
             color: var(--text);
-            padding: 15px 25px;
-            border-radius: 50px;
+            padding: 10px 20px;
+            border-radius: 25px;
             display: inline-block;
-            margin: 15px 0;
-            font-size: 1.1em;
+            margin: 10px 0;
+            font-size: 1em;
             font-weight: 500;
             letter-spacing: 0.5px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -177,7 +173,11 @@
             overflow: hidden;
         }
 
-        .scan-message::before {
+        .qr-label.slack {
+            border-color: var(--accent3);
+        }
+
+        .qr-label::before {
             content: '';
             position: absolute;
             top: 0;
@@ -193,6 +193,17 @@
             animation: shine 3s infinite;
         }
 
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            animation: colorShift 10s infinite linear;
+            text-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
         @keyframes shine {
             0% { left: -100%; }
             20% { left: 100%; }
@@ -205,51 +216,90 @@
             font-weight: 500;
             animation: fadeIn 2s ease-out;
             color: var(--accent3);
+            position: relative;
+            z-index: 2;
         }
 
         .code-comment {
             font-family: 'Fira Code', monospace;
             color: #6272a4;
             font-size: 0.9em;
-            text-align: left;
+            text-align: center;
             margin: 10px 0;
             display: block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-bottom: 20px;
+            font-size: 0.9em;
+            opacity: 0.7;
+            position: relative;
+            z-index: 2;
         }
 
         @media (max-width: 768px) {
-            .flex-container {
+            .qr-container {
                 flex-direction: column;
+                gap: 20px;
             }
             
-            .left-column, .right-column {
-                width: 100%;
+            .background-logo {
+                width: 80%;
+                max-width: 300px;
+            }
+            
+            body {
+                padding: 10px;
+                justify-content: flex-start;
+            }
+            
+            .container {
+                margin: 20px auto;
+            }
+
+            h1 {
+                font-size: 2em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <span class="code-comment">// Scan QR code to submit feedback</span>
-        <h1>Event Feedback Survey</h1>
+        <!-- Translucent background logo -->
+        <img src="logo.png" alt="DNewTech Logo" class="background-logo">
         
-        <div class="flex-container">
-            <div class="left-column">
-                <div class="logo">
-                    <img src="logo.png" alt="DNewTech Logo">
+        <span class="code-comment">// Scan QR code to connect and provide feedback</span>
+        <h1>Scan Me</h1>
+        
+        <div class="qr-container">
+            <div class="qr-section">
+                <div class="qr-label slack">
+                    <p>Join our Slack community!</p>
                 </div>
-                <p class="thank-you">Thank you for being part of our community!</p>
+                <div class="qr-code">
+                    <img src="slack_qr.png" alt="Slack QR Code">
+                </div>
+                <span class="code-comment">/* Connect with other members */</span>
             </div>
             
-            <div class="right-column">
-                <div class="scan-message">
-                    <p>Please scan the QR code to provide your feedback</p>
+            <div class="qr-section">
+                <div class="qr-label">
+                    <p>Provide your feedback</p>
                 </div>
-                
                 <div class="qr-code">
                     <img src="survey_qr.png" alt="Survey QR Code">
                 </div>
                 <span class="code-comment">/* Your input helps us improve */</span>
             </div>
+        </div>
+        
+        <p class="thank-you">Thank you for being part of our community!</p>
+        
+        <div class="footer">
+            <p>© 2025 DNewTech - All rights reserved</p>
         </div>
     </div>
 </body>
