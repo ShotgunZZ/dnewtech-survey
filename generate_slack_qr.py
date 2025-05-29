@@ -9,8 +9,8 @@ import qrcode
 from PIL import Image
 
 def generate_slack_qr():
-    # Slack invitation link
-    slack_url = "https://join.slack.com/t/dnewtech/shared_invite/zt-31lrcp9f8-19x13TsoulWs~titpTUL0A"
+    # Updated Slack invitation link
+    slack_url = "https://join.slack.com/t/dnewtech/shared_invite/zt-36q5n9ow0-U02mjTM_xY_exg75vRt0bA"
     
     # Create QR code instance
     qr = qrcode.QRCode(
@@ -32,6 +32,7 @@ def generate_slack_qr():
     qr_img.save(output_file)
     
     print(f"Slack QR code saved to {output_file}")
+    print(f"QR code points to: {slack_url}")
     return output_file
 
 if __name__ == "__main__":

@@ -11,7 +11,7 @@ import qrcode
 from PIL import Image, ImageDraw, ImageFont
 import os
 
-def generate_qr_code(url, output_file="survey_qr.png", add_text=True):
+def generate_qr_code(url, output_file="survey_qr.png", add_text=False):
     """
     Generate a QR code for the given URL and save it to a file.
     
@@ -86,6 +86,21 @@ def generate_qr_code(url, output_file="survey_qr.png", add_text=True):
     
     print(f"QR code saved to {output_file}")
     return output_file
+
+def regenerate_survey_qr_without_text(survey_url=None):
+    """
+    Regenerate the survey QR code without text to match the Slack QR code size.
+    
+    Args:
+        survey_url (str): The survey URL. If None, you'll need to provide it.
+    """
+    if survey_url is None:
+        print("Please provide your survey URL to regenerate the QR code without text.")
+        print("Usage: Call this function with your Google Forms URL")
+        return None
+    
+    print("Regenerating survey QR code without text...")
+    return generate_qr_code(survey_url, "survey_qr.png", add_text=False)
 
 def main():
     """Main function to handle command line arguments."""
