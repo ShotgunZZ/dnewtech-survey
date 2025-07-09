@@ -10,7 +10,7 @@ from PIL import Image
 
 def generate_slack_qr():
     # Updated Slack invitation link
-    slack_url = "https://join.slack.com/t/dnewtech/shared_invite/zt-36q5n9ow0-U02mjTM_xY_exg75vRt0bA"
+    slack_url = "https://join.slack.com/t/dnewtech/shared_invite/zt-38wdtoopz-~Tuim6km1j0zresyOEk9BQ"
     
     # Create QR code instance
     qr = qrcode.QRCode(
